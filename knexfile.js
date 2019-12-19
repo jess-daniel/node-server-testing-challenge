@@ -7,16 +7,16 @@ module.exports = {
     connection: {
       filename: "./data/lambdaBlog.db3"
     },
-    migrations: {
-      dirctory: "./data/migrations"
-    },
-    seeds: {
-      dirctory: "./data/seeds"
-    },
     pool: {
       afterCreate: (conn, done) => {
         conn.run("PRAGMA foreign_keys = ON", done);
       }
+    },
+    migrations: {
+      directory: "./data/migrations"
+    },
+    seeds: {
+      directory: "./data/seeds"
     }
   },
   testing: {
@@ -25,11 +25,16 @@ module.exports = {
     connection: {
       filename: "./data/lambdaTestBlog.db3"
     },
+    pool: {
+      afterCreate: (conn, done) => {
+        conn.run("PRAGMA foreign_keys = ON", done);
+      }
+    },
     migrations: {
-      dirctory: "./data/migrations"
+      directory: "./data/migrations"
     },
     seeds: {
-      dirctory: "./data/seeds"
+      directory: "./data/seeds"
     }
   },
 
